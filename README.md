@@ -1,7 +1,7 @@
 # WPF-MSSQL-SQLite-Connection
-WPF ADO .NET & EF CORE6
-ADO .NET
-1. Подключить NuGet MSSQL
+## WPF ADO .NET & EF CORE6
+## ADO .NET
+### 1. Подключить NuGet MSSQL
 ```
 System.Data.SqlClient Author Microsoft
 ```
