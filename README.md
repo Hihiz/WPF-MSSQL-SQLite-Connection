@@ -28,13 +28,13 @@ public SqlConnection sqlConnection = new SqlConnection(@"Data Source=Test\SQLEXP
     return table;
   }
   
-  public void Display(string query, DataGridView dgv)
+  public void Display(string query, DataGrid dg)
   {
     connection.Open();
     string cmd = query; // Из какой таблицы нужен вывод 
-    SqlCommand createCommand = new SqlCommand(cmd, connection);
+    SQLiteCommand createCommand = new SQLiteCommand(cmd, connection);
     createCommand.ExecuteNonQuery();
-    SqlDataAdapter dataAdp = new SqlDataAdapter(createCommand);
+    SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(createCommand);
     DataTable dt = new DataTable(); // В скобках указываем название таблицы
     dataAdp.Fill(dt);
     dg.ItemsSource = dt.DefaultView; // Сам вывод 
