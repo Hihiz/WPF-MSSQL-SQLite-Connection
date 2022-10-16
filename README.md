@@ -71,17 +71,17 @@ public DataTable Query(string sqlQuery)
 
 ### 6. Функция для вывода таблицы на Grid
 ```C#
- public void Display(string query, DataGridView dgv)
+public void Display(string query, DataGrid dg)
 {
-    connection.Open();
-    string cmd = query; // Из какой таблицы нужен вывод 
-    SqlCommand createCommand = new SqlCommand(cmd, connection);
-    createCommand.ExecuteNonQuery();
-    SqlDataAdapter dataAdp = new SqlDataAdapter(createCommand);
-    DataTable dt = new DataTable(); // В скобках указываем название таблицы
-    dataAdp.Fill(dt);
-    dg.ItemsSource = dt.DefaultView; // Сам вывод 
-    connection.Close();
+  connection.Open();
+  string cmd = query; // Из какой таблицы нужен вывод 
+  SQLiteCommand createCommand = new SQLiteCommand(cmd, connection);
+  createCommand.ExecuteNonQuery();
+  SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(createCommand);
+  DataTable dt = new DataTable(); // В скобках указываем название таблицы
+  dataAdp.Fill(dt);
+  dg.ItemsSource = dt.DefaultView; // Сам вывод 
+  connection.Close();
 }
 ```
 
