@@ -7,7 +7,7 @@ System.Data.SqlClient Author Microsoft
 ```
 ![NuGet System Data SqlClient](https://user-images.githubusercontent.com/98191494/190898120-92db2611-72c9-4d4d-92bb-f1baccc7cc98.PNG)
 
-### 2. Сделать класс для работы с БД MSSQL
+### 2. (Вариант 1) Сделать класс для работы с БД MSSQL
 ```C#
 public class DB
 {
@@ -39,6 +39,32 @@ public SqlConnection sqlConnection = new SqlConnection(@"Data Source=Test\SQLEXP
     dataAdp.Fill(dt);
     dg.ItemsSource = dt.DefaultView; // Сам вывод 
     connection.Close();
+  }
+}
+```
+
+### 2. (Вариант 2) Без класса для работы с БД MSSQL
+```C#
+private void Window_Loaded(object sender, RoutedEventArgs e)
+{
+  // Строка подключения
+  string connectionString = "Data Source=название сервера;Initial Catalog=название бд;Trusted_Connection=True;";
+
+  // Запрос
+  string sqlQuery = "SELECT * FROM Users";
+
+  using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+  {
+    sqlConnection.Open();
+    string cmd = sqlQuery; // Из какой таблицы нужен вывод 
+    SqlCommand createCommand = new SqlCommand(cmd, sqlConnection);
+    createCommand.ExecuteNonQuery();
+    SqlDataAdapter dataAdp = new SqlDataAdapter(createCommand);
+    DataTable dt = new DataTable(); // В скобках указываем название таблицы
+    dataAdp.Fill(dt);
+    // Вывод на грид
+    dataGridUser.ItemsSource = dt.DefaultView; // Сам вывод 
+    sqlConnection.Close();
   }
 }
 ```
@@ -129,7 +155,7 @@ System.Data.SQLite
 ```
 ![NuGet System Data SQLite](https://user-images.githubusercontent.com/98191494/195941990-567c41cf-c1cb-4d6a-8767-be879587714d.PNG)
 
-### 2. Сделать класс для работы с БД SQLite
+### 2. (Вариант 1) Сделать класс для работы с БД SQLite
 ```C#
 public class DB
 {
@@ -161,6 +187,32 @@ public DataTable Query(string sqlQuery)
     dataAdp.Fill(dt);
     dg.ItemsSource = dt.DefaultView; // Сам вывод 
     connection.Close();
+  }
+}
+```
+
+### 2. (Вариант 2) Без класса для работы с БД SQLite
+```C#
+private void Window_Loaded(object sender, RoutedEventArgs e)
+{
+  // Строка подключения
+  string connectionString = "Data Source=название бд.db;";
+
+  // Запрос
+  string sqlQuery = "SELECT * FROM Users";
+
+  using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+  {
+    sqlConnection.Open();
+    string cmd = sqlQuery; // Из какой таблицы нужен вывод 
+    SQLiteCommand  createCommand = new SQLiteCommand (cmd, sqlConnection);
+    createCommand.ExecuteNonQuery();
+    SQLiteDataAdapter  dataAdp = new SQLiteDataAdapter (createCommand);
+    DataTable dt = new DataTable(); // В скобках указываем название таблицы
+    dataAdp.Fill(dt);
+    // Вывод на грид
+    dataGridUser.ItemsSource = dt.DefaultView; // Сам вывод 
+    sqlConnection.Close();
   }
 }
 ```
