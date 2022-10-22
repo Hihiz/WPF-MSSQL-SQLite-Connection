@@ -32,9 +32,9 @@ public SqlConnection sqlConnection = new SqlConnection(@"Data Source=Test\SQLEXP
   {
     connection.Open();
     string cmd = query; // Из какой таблицы нужен вывод 
-    SQLiteCommand createCommand = new SQLiteCommand(cmd, connection);
+    SqlCommand createCommand = new SqlCommand(cmd, connection);
     createCommand.ExecuteNonQuery();
-    SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(createCommand);
+    SqlDataAdapter dataAdp = new SqlDataAdapter(createCommand);
     DataTable dt = new DataTable(); // В скобках указываем название таблицы
     dataAdp.Fill(dt);
     dg.ItemsSource = dt.DefaultView; // Сам вывод 
