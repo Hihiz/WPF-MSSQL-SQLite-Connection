@@ -201,7 +201,7 @@ private void Window_Loaded(object sender, RoutedEventArgs e)
   // Запрос
   string sqlQuery = "SELECT * FROM Users";
 
-  using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+  using (SQLiteConnection  sqlConnection = new SQLiteConnection (connectionString))
   {
     sqlConnection.Open();
     string cmd = sqlQuery; // Из какой таблицы нужен вывод 
