@@ -35,7 +35,7 @@ public SqlConnection sqlConnection = new SqlConnection(@"Data Source=Test\SQLEXP
     SqlCommand createCommand = new SqlCommand(cmd, connection);
     createCommand.ExecuteNonQuery();
     SqlDataAdapter dataAdp = new SqlDataAdapter(createCommand);
-    DataTable dt = new DataTable(); // В скобках указываем название таблицы
+    DataTable dt = new DataTable(); //
     dataAdp.Fill(dt);
     dg.ItemsSource = dt.DefaultView; // Сам вывод 
     connection.Close();
