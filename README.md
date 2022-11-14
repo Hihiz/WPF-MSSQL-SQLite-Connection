@@ -282,7 +282,7 @@ Microsoft.EntityFrameworkCore.Tools - необходим для создания
 ### 3. Создание классов по базе данных
 SQLite
 ```
-Scaffold-DbContext "DataSource=название бд.db;" Microsoft.EntityFrameworkCore.Sqlite
+Scaffold-DbContext "DataSource=полный путь к бд;" Microsoft.EntityFrameworkCore.Sqlite
 ```
 
 MSSQL
@@ -308,11 +308,11 @@ public class ApplicationContext : DbContext
 {
   public ApplicationContext()
   {
-    // Database.EnsureDeleted();
+    Database.EnsureDeleted();
     Database.EnsureCreated();
   }
 
-  public DbSet<Users> users { get; set; }
+  public DbSet<Users> Users { get; set; }
 
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {
