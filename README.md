@@ -364,3 +364,33 @@ using (SearchPhoneUserContext db = new SearchPhoneUserContext())
   }
 }
 ```
+
+## Миграции
+### 1.Если база данных существует Database First
+Делаем первую миграцию БЕЗ каких либо изменений
+
+
+Add-Migration "Initial"
+
+
+Комментируем метод Up
+
+
+Update-Database
+
+Вторую миграцию делаем С изменениями, пример добавляем новое поле в классе
+
+
+Add-Migration "AddAgeProduct"
+
+
+Update-database
+
+
+Последующие изменения делаются 
+
+
+Add-Migration "DeleteAgeProduct"
+
+
+Update-database
