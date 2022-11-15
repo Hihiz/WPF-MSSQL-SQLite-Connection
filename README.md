@@ -394,3 +394,14 @@ Add-Migration "DeleteAgeProduct"
 
 
 Update-database
+
+### 2.Если базы данных нет Code First
+В контексте не пишем Database.EnsureCreated();
+
+
+Add-Migration "Initial"
+
+* Метод Up НЕ трогаем
+
+Update-Database
+* После Update-Database база данных создается
