@@ -405,3 +405,17 @@ Add-Migration "Initial"
 
 Update-Database
 * После Update-Database база данных создается
+
+
+# Инициализация БД начальными данными
+* В классе контекста
+```C#
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().HasData(
+                new User { Id = 1, Name = "Tom", Age = 23 },
+                new User { Id = 2, Name = "Alice", Age = 26 },
+                new User { Id = 3, Name = "Sam", Age = 28 }
+        );
+    }
+```
