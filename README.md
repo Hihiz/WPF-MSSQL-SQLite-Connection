@@ -279,6 +279,21 @@ Microsoft.EntityFrameworkCore.Tools
 ```
 Microsoft.EntityFrameworkCore.Tools - необходим для создания классов по базе данных, то есть reverse engineering
 
+## Добавить в проект ```App.config``` 
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+	<connectionStrings>
+		<add
+			 name="ConnectionLocalDb"
+			 connectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SportStore;Trusted_Connection=True;"
+			 providerName="Microsoft.EntityFrameworkCore.SqlServer"/>
+	</connectionStrings>
+
+</configuration>
+```
+
 ### 3. Создание классов по базе данных
 SQLite
 ```
@@ -321,6 +336,9 @@ public class ApplicationContext : DbContext
       
       // MSSQL
        //optionsBuilder.UseSqlServer("Data Source=название сервера;Initial Catalog=название бд;Trusted_Connection=True;");
+       
+       // Если строка подключения в App.config, тогда
+     // optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["ConnectionDbLocal"].ToString());
   }
 }
 ```
