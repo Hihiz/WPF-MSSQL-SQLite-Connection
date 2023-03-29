@@ -304,7 +304,7 @@ Scaffold-DbContext "DataSource=полный путь к бд;" Microsoft.EntityF
 
 MSSQL
 ```
-Scaffold-DbContext "Data Source=название сервера;Initial Catalog=название БД;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer
+Scaffold-DbContext "Data Source=название сервера;Initial Catalog=название БД;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
 ```
 
 ## При подходе Code First
